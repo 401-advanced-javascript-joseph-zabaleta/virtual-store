@@ -37,18 +37,24 @@ export default function Categories() {
 
     const styles = {
         'nav': {
-            'marginTop': '5px'
+            'marginTop': '5px',
         }
     };
 
 
     return (
         <nav style={styles.nav}>
-            <Breadcrumbs aria-label='breadcrumb'>
+            <Breadcrumbs separator='|' aria-label='breadcrumb'>
                 {categoryList.map(cat => {
-                    return <Link key={cat.normalizedName} color='inherit' href='#' onClick={handleClick}>
-                        {cat.diplayName}
-                    </Link>
+                    return (
+                        <Link
+                            key={cat.normalizedName}
+                            color='inherit'
+                            href='#'
+                            onClick={handleClick}>
+                            {cat.diplayName}
+                        </Link>
+                    )
                 })}
             </Breadcrumbs>
         </nav>
