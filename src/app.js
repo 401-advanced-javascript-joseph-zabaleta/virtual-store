@@ -2,6 +2,7 @@ import React from 'react'
 
 import Header from './components/header/header.jsx';
 import Categories from './components/storefront/categories.jsx';
+import Products from './components/storefront/products.jsx';
 import Footer from './components/footer/footer.jsx';
 
 export default function App() {
@@ -10,10 +11,7 @@ export default function App() {
         <React.Fragment>
             <Header />
             <Categories />
-            <h1>
-                Filler Body
-                </h1>
-
+            <Products />
             <Footer />
         </React.Fragment>
 
