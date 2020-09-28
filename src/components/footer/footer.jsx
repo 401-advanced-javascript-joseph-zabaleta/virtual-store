@@ -16,8 +16,8 @@ const styles = {
     footer: {
 
         'display': 'flex',
-        'flex-direction': 'column',
-        'align-items': 'center'
+        'flexDirection': 'column',
+        'alignItems': 'center'
 
     }
 
@@ -33,7 +33,7 @@ export default function Footer() {
                 <Link href={links.github} color='inherit' rel='noopener' target='_blank'>
                     <GitHubIcon fontSize='large' />
                 </Link>
-                <Link href={links.linkedIn} color='inherit' color='inherit' rel='noopener' target='_blank'>
+                <Link href={links.linkedIn} color='inherit' rel='noopener' target='_blank'>
                     <LinkedInIcon fontSize='large' />
                 </Link>
             </Typography>

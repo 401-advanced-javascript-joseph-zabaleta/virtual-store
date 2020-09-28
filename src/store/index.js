@@ -1,1 +1,1 @@
-'use strict';
+import { createStore, combineReducers } from 'redux';
