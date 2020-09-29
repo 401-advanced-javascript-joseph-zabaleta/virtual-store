@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
@@ -11,7 +12,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import PopupState, { bindToggle, bindPopper } from 'material-ui-popup-state';
 
-import SimpleCart from './simplecart.js';
+import SimpleCart from './simplecart.jsx';
 
 const useStyles = makeStyles((theme) => ({
     typography: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function CartPopper() {
+function CartPopper(props) {
     const classes = useStyles();
 
     return (
@@ -27,7 +28,7 @@ export default function CartPopper() {
             {(popupState) => (
                 <div>
                     <IconButton variant='contained' color='inherit' {...bindToggle(popupState)}>
-                        <Badge badgeContent={5} color="secondary">
+                        <Badge badgeContent={props.cart.cartList.length} color="secondary">
                             <ShoppingCartIcon fontSize='large' />
                         </Badge>
                     </IconButton>
@@ -45,3 +46,9 @@ export default function CartPopper() {
         </PopupState>
     );
 }
+
+const mapStateToProps = (state) => ({
+    cart: state.cart,
+})
+
+export default connect(mapStateToProps)(CartPopper)
