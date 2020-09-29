@@ -9,22 +9,22 @@ const initState = {
     list: [
         {
             normalizedName: 'books',
-            diplayName: 'Books',
+            displayName: 'Books',
             description: 'Books Description...'
         },
         {
             normalizedName: 'electronics',
-            diplayName: 'Electronics',
+            displayName: 'Electronics',
             description: 'Electronics Description...'
         },
         {
             normalizedName: 'garden',
-            diplayName: 'Garden',
+            displayName: 'Garden',
             description: 'Garden Description...'
         },
         {
             normalizedName: 'sports',
-            diplayName: 'Sports',
+            displayName: 'Sports',
             description: 'Sports Description...'
         }
     ],

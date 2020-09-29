@@ -1,4 +1,5 @@
 import React from 'react'
+import 'fontsource-roboto';
 
 import Header from './components/header/header.jsx';
 import Categories from './components/storefront/categories.jsx';

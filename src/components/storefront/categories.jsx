@@ -5,13 +5,16 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 
 import { changeActiveCategory } from '../../store/categories.js';
+import CurrentCategory from './current-category.jsx';
 
 function Categories(props) {
 
     const styles = {
+
         'nav': {
             'marginTop': '5px',
-        }
+        },
+
     };
 
 
@@ -29,11 +32,12 @@ function Categories(props) {
                             color={isActive ? 'primary' : 'inherit'}
                             href='#'
                             onClick={() => { props.changeActiveCategory(cat) }}>
-                            {cat.diplayName}
+                            {cat.displayName}
                         </Link>
                     )
                 })}
             </Breadcrumbs>
+            <CurrentCategory />
         </nav>
     )
 }
