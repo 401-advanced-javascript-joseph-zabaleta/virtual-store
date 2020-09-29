@@ -8,6 +8,7 @@ import Footer from './components/footer/footer.jsx';
 export default function App() {
 
     return (
+
         <React.Fragment>
             <Header />
             <Categories />

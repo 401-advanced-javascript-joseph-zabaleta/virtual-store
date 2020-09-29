@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,6 +9,7 @@ import Button from '@material-ui/core/Button';
 
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
+import { goHome } from '../../store/nav.js';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -27,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
 
         flexGrow: 1,
+        cursor: 'pointer',
 
     },
 
@@ -41,7 +44,7 @@ const styles = {
 }
 
 
-export default function Header() {
+function Header(props) {
 
     const classes = useStyles();
 
@@ -49,7 +52,10 @@ export default function Header() {
         <header>
             <AppBar position='static'>
                 <Toolbar>
-                    <Typography variant='h3' className={classes.title}>
+                    <Typography
+                        variant='h3'
+                        className={classes.title}
+                        onClick={props.goHome}>
                         Virtual Store
                     </Typography>
                     <Button color='inherit'>
@@ -61,3 +67,9 @@ export default function Header() {
         </header>
     )
 }
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = { goHome };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

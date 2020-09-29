@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -11,65 +12,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 
-let productsList = [
-    {
-        category: 'books',
-        name: 'Random Book',
-        description: 'Some book description........',
-        price: 20,
-        count: 1,
-    },
-    {
-        category: 'books',
-        name: 'Blue Book',
-        description: 'Special training Tactics Manual',
-        price: 99,
-        count: 10,
-    },
-    {
-        category: 'electronics',
-        name: 'Processor',
-        description: 'Fastest processor known to you.',
-        price: 750,
-        count: 2,
-    },
-    {
-        category: 'electronics',
-        name: 'Power Supply',
-        description: 'Gold standard powersupply: 1500W',
-        price: 175,
-        count: 5,
-    },
-    {
-        category: 'electronics',
-        name: 'Speedy Mouse',
-        description: 'Computer mouse with the a speedy click response rate',
-        price: 50,
-        count: 12,
-    },
-    {
-        category: 'Garden',
-        name: 'Golden Shovel',
-        description: 'The perfect gift your lovely Gold Digger. There is a special gold digger out there that could really benefit from a tool of this power',
-        price: 1500,
-        count: 1,
-    },
-    {
-        category: 'sports',
-        name: 'FootBall',
-        description: 'Top quality Football for recreational use',
-        price: 15,
-        count: 20,
-    },
-    {
-        category: 'sports',
-        name: 'BasketBall',
-        description: 'Top quality BasketBall for recreational use',
-        price: 15,
-        count: 20,
-    },
-]
-
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
@@ -80,7 +22,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Products() {
+function Products(props) {
 
     const classes = useStyles();
 
@@ -91,7 +33,7 @@ export default function Products() {
                 space={10}
                 alignItems='flex-start'
                 justify='flex-start'>
-                {productsList.map(product => {
+                {props.products.activeList.map(product => {
                     return (
                         <Grid key={product.name} item xs={12} sm={6} md={4}>
                             <Card className={classes.root}>
@@ -132,3 +74,9 @@ export default function Products() {
         </Container>
     )
 }
+
+const mapStateToProps = state => ({
+    products: state.products,
+});
+
+export default connect(mapStateToProps)(Products)

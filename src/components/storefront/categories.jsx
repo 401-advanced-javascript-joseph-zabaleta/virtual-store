@@ -1,39 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux';
 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 
-export default function Categories() {
+import { changeActiveCategory } from '../../store/categories.js';
 
-    let categoryList = [
-        {
-            normalizedName: 'books',
-            diplayName: 'Books',
-            description: 'Books Description...'
-        },
-        {
-            normalizedName: 'electronics',
-            diplayName: 'Electronics',
-            description: 'Electronics Description...'
-        },
-        {
-            normalizedName: 'garden',
-            diplayName: 'Garden',
-            description: 'Garden Description...'
-        },
-        {
-            normalizedName: 'sports',
-            diplayName: 'Sports',
-            description: 'Sports Description...'
-        }
-    ]
-
-    function handleClick(e) {
-
-        e.preventDefault();
-        console.log('Clicked!', e.target)
-
-    };
+function Categories(props) {
 
     const styles = {
         'nav': {
@@ -45,13 +18,17 @@ export default function Categories() {
     return (
         <nav style={styles.nav}>
             <Breadcrumbs separator='|' aria-label='breadcrumb'>
-                {categoryList.map(cat => {
+                {props.categories.list.map(cat => {
+
+                    const isActive = cat.normalizedName === props.categories.activeCategory.normalizedName
+
+
                     return (
                         <Link
                             key={cat.normalizedName}
-                            color='inherit'
+                            color={isActive ? 'primary' : 'inherit'}
                             href='#'
-                            onClick={handleClick}>
+                            onClick={() => { props.changeActiveCategory(cat) }}>
                             {cat.diplayName}
                         </Link>
                     )
@@ -60,3 +37,11 @@ export default function Categories() {
         </nav>
     )
 }
+
+const mapStateToProps = state => ({
+    categories: state.categories,
+});
+
+const mapDispatchToProps = { changeActiveCategory };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories)
