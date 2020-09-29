@@ -15,12 +15,16 @@ function Categories(props) {
             'marginTop': '5px',
         },
 
+        'breadcrumb': {
+            'marginLeft': '15px',
+        }
+
     };
 
 
     return (
         <nav style={styles.nav}>
-            <Breadcrumbs separator='|' aria-label='breadcrumb'>
+            <Breadcrumbs separator='|' aria-label='breadcrumb' style={styles.breadcrumb}>
                 {props.categories.list.map(cat => {
 
                     const isActive = cat.normalizedName === props.categories.activeCategory.normalizedName

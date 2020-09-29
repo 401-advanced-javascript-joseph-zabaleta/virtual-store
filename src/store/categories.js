@@ -9,22 +9,22 @@ const initState = {
     list: [
         {
             normalizedName: 'books',
-            displayName: 'Books Department',
+            displayName: 'Books',
             description: 'All books from all walks of life live here. There are so many to see and so many to read.'
         },
         {
             normalizedName: 'electronics',
-            displayName: 'Electronics Department',
-            description: 'There is a chip and then there is a resistor and then there is 3.14159265358979323846... '
+            displayName: 'Electronics',
+            description: 'There is a chip and a resistor and then there is 3.14159265358979323846... '
         },
         {
             normalizedName: 'garden',
-            displayName: 'Garden Department',
+            displayName: 'Garden',
             description: 'The grass is always greener on the other side. So they say, who are they?'
         },
         {
             normalizedName: 'sports',
-            displayName: 'Sports Department',
+            displayName: 'Sports',
             description: 'Run, jump, sprint, crawl, climb, swim, push, pull, swing, and I am tired.'
         }
     ],

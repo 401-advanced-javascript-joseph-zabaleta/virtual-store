@@ -17,8 +17,9 @@ const styles = {
 
         'display': 'flex',
         'flexDirection': 'column',
-        'alignItems': 'center'
-
+        'alignItems': 'center',
+        'backgroundColor': '#eee',
+        'marginTop': '15px',
     }
 
 };
@@ -26,7 +27,7 @@ const styles = {
 export default function Footer() {
     return (
         <footer style={styles.footer}>
-            <Typography>
+            <Typography gutterBottom>
                 &copy;Joseph Zabaleta
             </Typography>
             <Typography>
