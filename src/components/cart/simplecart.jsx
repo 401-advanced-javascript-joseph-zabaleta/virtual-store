@@ -9,7 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 
-// a
+import { decrementCart } from '../../store/cart.js';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,7 +47,7 @@ function SimpleCart(props) {
                                     <ListItemText>
                                         {item.name}
                                     </ListItemText>
-                                    <Button onClick={() => { }}>
+                                    <Button onClick={() => { props.decrementCart(item) }}>
                                         X
                                     </Button>
                                 </ListItem>
@@ -80,4 +80,6 @@ const mapStateToProps = (state) => ({
     cart: state.cart,
 })
 
-export default connect(mapStateToProps)(SimpleCart)
+const mapDispatchToProps = { decrementCart }
+
+export default connect(mapStateToProps, mapDispatchToProps)(SimpleCart)
