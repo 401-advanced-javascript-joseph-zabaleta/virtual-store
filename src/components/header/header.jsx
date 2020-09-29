@@ -5,13 +5,9 @@ import { makeStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Badge from '@material-ui/core/Badge';
-import IconButton from '@material-ui/core/IconButton';
-
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import { goHome } from '../../store/nav.js';
+import CartPopper from '../cart/cart-popper.jsx';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -35,15 +31,13 @@ const useStyles = makeStyles((theme) => ({
 
     },
 
+    typography: {
+
+        padding: theme.spacing(2),
+
+    },
+
 }));
-
-const styles = {
-
-    cart: {
-        'marginLeft': '5px'
-    }
-
-}
 
 
 function Header(props) {
@@ -60,11 +54,7 @@ function Header(props) {
                         onClick={props.goHome}>
                         Virtual Store
                     </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={5} color="secondary">
-                            <ShoppingCartIcon fontSize='large' />
-                        </Badge>
-                    </IconButton>
+                    <CartPopper />
                 </Toolbar>
             </AppBar>
         </header>

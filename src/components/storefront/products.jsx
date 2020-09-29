@@ -11,6 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import { incrementCart } from '../../store/cart.js';
 
 const useStyles = makeStyles({
     root: {
@@ -71,7 +72,10 @@ function Products(props) {
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button size='small' color='primary'>
+                                    <Button
+                                        size='small'
+                                        color='primary'
+                                        onClick={() => { props.incrementCart(product) }}>
                                         ADD TO CART
                                     </Button>
                                     <Button size='small' color='primary'>
@@ -91,4 +95,6 @@ const mapStateToProps = state => ({
     products: state.products,
 });
 
-export default connect(mapStateToProps)(Products)
+const mapDispatchToProps = { incrementCart };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products)
