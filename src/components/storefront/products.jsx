@@ -22,6 +22,17 @@ const useStyles = makeStyles({
     },
 });
 
+const styles = {
+
+    description: {
+
+        height: '38px',
+        overflow: 'hidden'
+
+    }
+
+};
+
 function Products(props) {
 
     const classes = useStyles();
@@ -54,6 +65,7 @@ function Products(props) {
                                     <Typography
                                         variant='body2'
                                         color='textSecondary'
+                                        style={styles.description}
                                         component='p'>
                                         {product.description}
                                     </Typography>

@@ -6,6 +6,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Badge from '@material-ui/core/Badge';
+import IconButton from '@material-ui/core/IconButton';
 
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
@@ -58,10 +60,11 @@ function Header(props) {
                         onClick={props.goHome}>
                         Virtual Store
                     </Typography>
-                    <Button color='inherit'>
-                        Cart (0)
-                        <ShoppingCartIcon style={styles.cart} />
-                    </Button>
+                    <IconButton color="inherit">
+                        <Badge badgeContent={5} color="secondary">
+                            <ShoppingCartIcon fontSize='large' />
+                        </Badge>
+                    </IconButton>
                 </Toolbar>
             </AppBar>
         </header>
