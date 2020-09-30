@@ -1,31 +1,23 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-
-import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
 
+import { incrementCart } from '../../store/cart.js';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -177,7 +169,8 @@ function Details(props) {
                 <Button
                     variant='contained'
                     color='primary'
-                    style={styles.button}>
+                    style={styles.button}
+                    onClick={() => { props.incrementCart(props.product) }}>
                     Buy
                 </Button>
 
@@ -219,5 +212,6 @@ const mapStateToProps = state => ({
     product: state.products.activeItem
 })
 
+const mapDispatchToProps = { incrementCart }
 
-export default connect(mapStateToProps)(Details)
+export default connect(mapStateToProps, mapDispatchToProps)(Details)
