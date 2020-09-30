@@ -1,10 +1,13 @@
 import _ from 'lodash';
+import axios from 'axios';
+
 
 import { categoryConstants } from './categories.js';
 import { nagivationConstants } from './nav.js';
 
 export const productConstants = {
-    CHANGE: 'PRODUCTS_CHANGE'
+    CHANGE: 'PRODUCTS_CHANGE',
+    GET: 'PRODUCTS_GET'
 };
 
 const initState = {
@@ -106,6 +109,12 @@ export default (state = initState, action) => {
                 activeItem: payload,
             };
 
+        case productConstants.GET:
+
+            return {
+                ...state,
+                list: payload,
+            }
 
         default:
             return state;
@@ -120,4 +129,20 @@ export const changeActiveItem = (item) => {
         type: productConstants.CHANGE,
         payload: item
     }
+}
+
+
+export function getProducts() {
+
+    return async function (dispatch) {
+
+        const response = await axios.get('https:/api-js401.herokuapp.com/api/v1/products')
+
+        dispatch({
+            type: productConstants.GET,
+            action: response.data.results
+        })
+
+    }
+
 }

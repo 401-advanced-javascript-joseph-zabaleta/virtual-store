@@ -11,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 
 import { decrementCart } from '../../store/cart.js';
+import { changeActiveItem } from '../../store/products.js';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,9 +53,14 @@ function SimpleCart(props) {
                             return (
 
                                 <ListItem key={item.name}>
-                                    <ListItemText>
-                                        {item.name}
-                                    </ListItemText>
+                                    <Link
+                                        to='/details'
+                                        style={styles.link}
+                                        onClick={() => { props.changeActiveItem(item) }}>
+                                        <ListItemText>
+                                            {item.name}
+                                        </ListItemText>
+                                    </Link>
                                     <Button onClick={() => { props.decrementCart(item) }}>
                                         X
                                     </Button>
@@ -90,6 +96,6 @@ const mapStateToProps = (state) => ({
     cart: state.cart,
 })
 
-const mapDispatchToProps = { decrementCart }
+const mapDispatchToProps = { decrementCart, changeActiveItem }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleCart)
