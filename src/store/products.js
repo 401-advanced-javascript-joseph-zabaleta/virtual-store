@@ -3,6 +3,10 @@ import _ from 'lodash';
 import { categoryConstants } from './categories.js';
 import { nagivationConstants } from './nav.js';
 
+export const productConstants = {
+    CHANGE: 'PRODUCTS_CHANGE'
+};
+
 const initState = {
     list: [
         {
@@ -63,7 +67,9 @@ const initState = {
         },
     ],
 
-    activeList: []
+    activeList: [],
+
+    activeItem: {}
 };
 
 initState.activeList = initState.list;
@@ -84,6 +90,7 @@ export default (state = initState, action) => {
                 activeList,
             };
 
+
         case nagivationConstants.GOHOME:
 
             return {
@@ -91,8 +98,26 @@ export default (state = initState, action) => {
                 activeList: state.list,
             };
 
+
+        case productConstants.CHANGE:
+
+            return {
+                ...state,
+                activeItem: payload,
+            };
+
+
         default:
             return state;
     };
 
 };
+
+
+
+export const changeActiveItem = (item) => {
+    return {
+        type: productConstants.CHANGE,
+        payload: item
+    }
+}

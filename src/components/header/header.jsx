@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
@@ -37,6 +38,14 @@ const useStyles = makeStyles((theme) => ({
 
     },
 
+    link: {
+
+        textDecoration: 'none',
+        color: '#FFF',
+        flexGrow: 1,
+
+    }
+
 }));
 
 
@@ -48,12 +57,15 @@ function Header(props) {
         <header>
             <AppBar position='static'>
                 <Toolbar>
-                    <Typography
-                        variant='h3'
-                        className={classes.title}
-                        onClick={props.goHome}>
-                        Virtual Store
-                    </Typography>
+                    <Link to='/' className={classes.link}>
+                        <Typography
+                            variant='h3'
+                            color='inherit'
+                            className={classes.title}
+                            onClick={props.goHome}>
+                            Virtual Store
+                            </Typography>
+                    </Link>
                     <CartPopper />
                 </Toolbar>
             </AppBar>

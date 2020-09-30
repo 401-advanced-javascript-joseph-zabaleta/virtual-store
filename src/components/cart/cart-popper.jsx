@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Popper from '@material-ui/core/Popper';
-import Fade from '@material-ui/core/Fade';
+import Popover from '@material-ui/core/Popover';
 import Paper from '@material-ui/core/Paper';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
-import PopupState, { bindToggle, bindPopper } from 'material-ui-popup-state';
+import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
 import SimpleCart from './simplecart.jsx';
 
@@ -21,29 +20,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CartPopper(props) {
+
     const classes = useStyles();
 
     return (
+
         <PopupState variant="popper" popupId="demo-popup-popper">
             {(popupState) => (
                 <div>
-                    <IconButton variant='contained' color='inherit' {...bindToggle(popupState)}>
+                    <IconButton variant='contained' color='inherit' {...bindTrigger(popupState)}>
                         <Badge badgeContent={props.cart.cartList.length} color="secondary">
                             <ShoppingCartIcon fontSize='large' />
                         </Badge>
                     </IconButton>
-                    <Popper {...bindPopper(popupState)} transition>
-                        {({ TransitionProps }) => (
-                            <Fade {...TransitionProps} timeout={350}>
-                                <Paper>
-                                    <SimpleCart className={classes.typography} />
-                                </Paper>
-                            </Fade>
-                        )}
-                    </Popper>
+                    <Popover
+                        {...bindPopover(popupState)}
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center',
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
+                        }}
+                    >
+
+                        <Paper>
+                            <SimpleCart className={classes.typography} />
+                        </Paper>
+                    </Popover>
+
                 </div>
             )}
         </PopupState>
+
     );
 }
 

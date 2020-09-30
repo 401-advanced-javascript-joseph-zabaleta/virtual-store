@@ -9,7 +9,7 @@ export const cartConstants = {
 
 
 const initState = {
-    cartList: []
+    cartList: [],
 };
 
 export default (state = initState, action) => {
@@ -27,7 +27,6 @@ export default (state = initState, action) => {
             }
 
 
-
         case cartConstants.DECREMENT:
 
             let cartList = _.filter(state.cartList, (o) => {
@@ -39,6 +38,7 @@ export default (state = initState, action) => {
             return {
                 cartList
             };
+
 
         default:
             return state;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { If, Then, Else } from 'react-if';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -30,6 +31,13 @@ function SimpleCart(props) {
             textAlign: 'center',
             margin: '5px',
 
+        },
+
+
+        link: {
+
+            'textDecoration': 'none'
+
         }
 
     }
@@ -57,9 +65,11 @@ function SimpleCart(props) {
                         })}
                         <Divider />
                         <div style={styles.checkoutButton}>
-                            <Button variant="contained" color="primary">
-                                Proceed to Checkout
-                            </Button>
+                            <Link to='/checkout' style={styles.link}>
+                                <Button variant="contained" color="primary">
+                                    Proceed to Checkout
+                                </Button>
+                            </Link>
                         </div>
                     </Then>
                     <Else>

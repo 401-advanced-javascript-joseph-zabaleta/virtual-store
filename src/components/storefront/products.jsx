@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -12,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import { incrementCart } from '../../store/cart.js';
+import { changeActiveItem } from '../../store/products.js';
 
 const useStyles = makeStyles({
     root: {
@@ -29,6 +31,12 @@ const styles = {
 
         height: '38px',
         overflow: 'hidden'
+
+    },
+
+    link: {
+
+        'textDecoration': 'none'
 
     }
 
@@ -78,16 +86,21 @@ function Products(props) {
                                         onClick={() => { props.incrementCart(product) }}>
                                         ADD TO CART
                                     </Button>
-                                    <Button size='small' color='primary'>
-                                        VIEW DETAILS
-                                    </Button>
+                                    <Link to='/details' style={styles.link}>
+                                        <Button
+                                            size='small'
+                                            color='primary'
+                                            onClick={() => { props.changeActiveItem(product) }}>
+                                            VIEW DETAILS
+                                        </Button>
+                                    </Link>
                                 </CardActions>
                             </Card>
                         </Grid>
                     )
                 })}
             </Grid>
-        </Container>
+        </Container >
     )
 }
 
@@ -95,6 +108,6 @@ const mapStateToProps = state => ({
     products: state.products,
 });
 
-const mapDispatchToProps = { incrementCart };
+const mapDispatchToProps = { incrementCart, changeActiveItem };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)
