@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { incrementCart } from '../../store/cart.js';
 import { changeActiveItem } from '../../store/products.js';
+import { getProducts } from '../../store/products.js';
 
 const useStyles = makeStyles({
     root: {
@@ -43,6 +44,12 @@ const styles = {
 };
 
 function Products(props) {
+
+    let getProducts = props.getProducts
+
+    useEffect(() => {
+        getProducts()
+    }, [getProducts])
 
     const classes = useStyles();
 
@@ -108,6 +115,6 @@ const mapStateToProps = state => ({
     products: state.products,
 });
 
-const mapDispatchToProps = { incrementCart, changeActiveItem };
+const mapDispatchToProps = { incrementCart, changeActiveItem, getProducts };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)

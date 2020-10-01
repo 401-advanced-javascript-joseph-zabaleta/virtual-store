@@ -3,7 +3,6 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
@@ -99,59 +98,58 @@ export default function Checkout() {
         <React.Fragment>
             <Container className={classes.root}>
                 <Card className={classes.card}>
-                    <CardActionArea>
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                Order Summary
+
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            Order Summary
                             </Typography>
-                            <Toolbar
-                                style={styles.toolBar}>
+                        <Toolbar
+                            style={styles.toolBar}>
 
 
-                                <Typography
-                                    variant='body1'
-                                    style={styles.typoName}>
-                                    <span>
-                                        Item name here
-                                    </span>
-                                </Typography>
-                                <Typography>
-                                    <span>
-                                        Price goes here
-                                    </span>
-                                </Typography>
-                            </Toolbar>
                             <Typography
-                                variant="body2"
-                                color="textSecondary"
-                                component="p"
-                                style={styles.description}>
-                                Item Description Goes here
+                                variant='body1'
+                                style={styles.typoName}>
+                                <span>
+                                    Item name here
+                                    </span>
                             </Typography>
-                            <Divider />
-
-
-                            <Toolbar
-                                style={styles.toolBar}>
-
-
-                                <Typography
-                                    variant='body1'
-                                    style={styles.typoName}>
-                                    <span>
-                                        Total
+                            <Typography>
+                                <span>
+                                    Price goes here
                                     </span>
-                                </Typography>
-                                <Typography>
-                                    <span>
-                                        TOTAL PRICE
+                            </Typography>
+                        </Toolbar>
+                        <Typography
+                            variant="body2"
+                            color="textSecondary"
+                            component="p"
+                            style={styles.description}>
+                            Item Description Goes here
+                        </Typography>
+                        <Divider />
+
+                        <Toolbar
+                            style={styles.toolBar}>
+
+
+                            <Typography
+                                variant='body1'
+                                style={styles.typoName}>
+                                <span>
+                                    Total
                                     </span>
-                                </Typography>
-                            </Toolbar>
+                            </Typography>
+                            <Typography>
+                                <span>
+                                    TOTAL PRICE
+                                    </span>
+                            </Typography>
+                        </Toolbar>
 
 
-                        </CardContent>
-                    </CardActionArea>
+                    </CardContent>
+
                     <CardActions>
 
 

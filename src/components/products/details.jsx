@@ -18,7 +18,6 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
 import { incrementCart } from '../../store/cart.js';
-import { getProducts } from '../../store/products.js';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -121,14 +120,6 @@ function Details(props) {
         setOpen(!open);
 
     };
-
-    // useEffect(() => {
-    //     effect
-    //     return () => {
-    //         cleanup
-    //     }
-    // }, [input])
-
 
     return (
         <React.Fragment>

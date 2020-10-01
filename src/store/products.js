@@ -114,6 +114,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 list: payload,
+                activeList: payload,
             }
 
         default:
@@ -138,9 +139,11 @@ export function getProducts() {
 
         const response = await axios.get('https:/api-js401.herokuapp.com/api/v1/products')
 
+        console.log(response);
+
         dispatch({
             type: productConstants.GET,
-            action: response.data.results
+            payload: response.data.results
         })
 
     }
