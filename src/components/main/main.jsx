@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Categories from '../storefront/categories.jsx';
 import Products from '../storefront/products.jsx';
 import Details from '../products/details.jsx';
+import Checkout from '../cart/checkout.jsx';
 
 export default function Main() {
     return (
@@ -17,9 +18,7 @@ export default function Main() {
                     <Details />
                 </Route>
                 <Route exact path='/checkout'>
-                    <h1>
-                        Checkout reached!
-                    </h1>
+                    <Checkout />
                 </Route>
                 <Route>
                     <div>
