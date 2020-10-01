@@ -133,6 +133,7 @@ function Details(props) {
                     variant='body1'
                     align='center'>
                     {props.product.description}
+                    Description Goes here (API does not have this)
                 </Typography>
                 <Card className={classes.root}>
                     <CardMedia
@@ -142,17 +143,13 @@ function Details(props) {
                         alt={props.product.name}
                         image='https://via.placeholder.com/600x400' />
                     <CardContent style={styles.content}>
-                        {/* <Toolbar>
-                            <div>hello</div>
-                            <div>HI</div>
-                        </Toolbar> */}
                         <Toolbar>
                             <Typography style={styles.quantity}>
                                 <span style={styles.spanTitle}>
                                     Quantity:
                                 </span>
                                 <span style={styles.spanContent}>
-                                    {props.product.count}
+                                    {props.product.inStock}
                                 </span>
                             </Typography>
                             <Typography style={styles.price}>

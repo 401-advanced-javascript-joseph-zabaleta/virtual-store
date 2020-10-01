@@ -19,7 +19,7 @@ function CurrentCategory(props) {
 
 
 
-    let displayName = props.categories.activeCategory.displayName ? props.categories.activeCategory.displayName + ' Department' : 'Welcome to VS'
+    let displayName = props.categories.activeCategory.name ? props.categories.activeCategory.name + ' Department' : 'Welcome to VS'
     let description = props.categories.activeCategory.description ? props.categories.activeCategory.description : 'Where nothing goes on sale'
 
     return (

@@ -1,8 +1,9 @@
 import { nagivationConstants } from './nav.js';
-
+import axios from 'axios';
 
 export const categoryConstants = {
-    CHANGE: 'CATEGORIES_CHANGE'
+    CHANGE: 'CATEGORIES_CHANGE',
+    GET: 'CATEGORIES_GET'
 }
 
 const initState = {
@@ -50,6 +51,14 @@ export default (state = initState, action) => {
                 ...state,
                 activeCategory: {},
             };
+
+        case categoryConstants.GET:
+
+            return {
+                ...state,
+                list: payload
+            }
+
         default:
             return state;
     };
@@ -62,3 +71,18 @@ export const changeActiveCategory = (category) => {
         payload: category
     };
 };
+
+export function getCategories() {
+
+    return async function (dispatch) {
+
+        const response = await axios.get('https:/api-js401.herokuapp.com/api/v1/categories')
+
+        dispatch({
+            type: categoryConstants.GET,
+            payload: response.data.results
+        })
+
+    }
+
+}

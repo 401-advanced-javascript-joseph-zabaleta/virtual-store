@@ -84,6 +84,7 @@ function Products(props) {
                                         style={styles.description}
                                         component='p'>
                                         {product.description}
+                                        Description Goes here (API does not have this)
                                     </Typography>
                                 </CardContent>
                                 <CardActions>

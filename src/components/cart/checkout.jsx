@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux';
+
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
@@ -89,10 +91,11 @@ const styles = {
     }
 }
 
-
-export default function Checkout() {
+function Checkout(props) {
 
     const classes = useStyles();
+
+    let totalPrice = 0;
 
     return (
         <React.Fragment>
@@ -103,31 +106,41 @@ export default function Checkout() {
                         <Typography gutterBottom variant="h5" component="h2">
                             Order Summary
                             </Typography>
-                        <Toolbar
-                            style={styles.toolBar}>
+
+                        {props.cart.cartList.map(item => {
+
+                            totalPrice += item.price;
+
+                            return (
+                                <React.Fragment>
+                                    <Toolbar
+                                        style={styles.toolBar}>
+                                        <Typography
+                                            variant='body1'
+                                            style={styles.typoName}>
+                                            <span>
+                                                {item.name}
+                                            </span>
+                                        </Typography>
+                                        <Typography>
+                                            <span>
+                                                ${item.price}
+                                            </span>
+                                        </Typography>
+                                    </Toolbar>
+                                    <Typography
+                                        variant="body2"
+                                        color="textSecondary"
+                                        component="p"
+                                        style={styles.description}>
+                                        Description Goes here (API does not have this)
+                                    </Typography>
+                                    <Divider />
+                                </React.Fragment>
+                            )
+                        })}
 
 
-                            <Typography
-                                variant='body1'
-                                style={styles.typoName}>
-                                <span>
-                                    Item name here
-                                    </span>
-                            </Typography>
-                            <Typography>
-                                <span>
-                                    Price goes here
-                                    </span>
-                            </Typography>
-                        </Toolbar>
-                        <Typography
-                            variant="body2"
-                            color="textSecondary"
-                            component="p"
-                            style={styles.description}>
-                            Item Description Goes here
-                        </Typography>
-                        <Divider />
 
                         <Toolbar
                             style={styles.toolBar}>
@@ -142,8 +155,8 @@ export default function Checkout() {
                             </Typography>
                             <Typography>
                                 <span>
-                                    TOTAL PRICE
-                                    </span>
+                                    ${totalPrice.toFixed(2)}
+                                </span>
                             </Typography>
                         </Toolbar>
 
@@ -222,3 +235,11 @@ export default function Checkout() {
         </React.Fragment>
     )
 }
+
+const mapStateToProps = state => ({
+
+    cart: state.cart,
+
+})
+
+export default connect(mapStateToProps)(Checkout);
